@@ -54,7 +54,7 @@ O Project Model Canvas foi utilizado para estruturar o planejamento do projeto, 
 - Possível uso de React  
 
 ### Backend
-- Não implementado (previsto: Node.js e Express)  
+- Firebase (Authentication e Firestore)  
 
 ### Banco de Dados
 - Firebase (Firestore)  
