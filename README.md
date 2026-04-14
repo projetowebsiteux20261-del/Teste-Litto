@@ -59,8 +59,7 @@ O Litto busca:
 
 ### Backend
 
-* Node.js
-* (Possível uso de Express)
+* Não implementado (previsto: Node.js + Express)
 
 ### Banco de Dados
 
@@ -109,18 +108,13 @@ O projeto estará disponível em:
 
 ## Como Executar o Projeto
 
-```bash
 # Clone o repositório
 git clone https://github.com/projetowebsiteux20261-del/Teste-Litto.git
 
 # Acesse a pasta
-cd litto
+cd Teste-Litto
 
-# Instale as dependências
-npm install
-
-# Execute o projeto
-npm run dev
+# Abra o arquivo index.html no navegador
 ```
 
 ---
