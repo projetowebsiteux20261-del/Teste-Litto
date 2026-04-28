@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Litto Book Club - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#ffffff",
+                    "blue": "#3349e5",
+                    "on-surface-variant": "#444655",
+                    "on-primary-fixed": "#000c62",
+                    "primary": "#3349e5",
+                    "on-secondary-fixed-variant": "#7f2b02",
+                    "surface-bright": "#fbf8ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#bcc2ff",
+                    "cream": "#FFFDF5",
+                    "tertiary-container": "#c45500",
+                    "primary-fixed": "#dfe0ff",
+                    "on-tertiary-fixed-variant": "#783100",
+                    "error-container": "#ffdad6",
+                    "dark": "#0f172a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-container-high": "#e8e7f4",
+                    "surface-container-highest": "#e3e1ee",
+                    "tertiary": "#9d4300",
+                    "surface": "#fbf8ff",
+                    "inverse-on-surface": "#f1effc",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#ffb690",
+                    "tertiary-fixed": "#ffdbcb",
+                    "on-secondary-fixed": "#380d00",
+                    "bg-primary": "#3349e5",
+                    "text-secondary": "#444655",
+                    "surface-variant": "#e3e1ee",
+                    "orange": "#ff6b00",
+                    "inverse-surface": "#2f3039",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f4f2ff",
+                    "primary-container": "#5065ff",
+                    "bg-secondary": "#f4f2ff",
+                    "surface-tint": "#344ae6",
+                    "background": "#3349e5",
+                    "outline": "#757687",
+                    "on-surface": "#1a1b24",
+                    "secondary": "#9f4119",
+                    "border-light": "#e2e8f0",
+                    "text-primary": "#1a1b24",
+                    "on-primary-fixed-variant": "#0c2acf",
+                    "on-secondary-container": "#702400",
+                    "surface-container": "#eeecf9",
+                    "on-tertiary-container": "#ffffff",
+                    "yellow": "#ffd600",
+                    "on-background": "#1a1b24",
+                    "secondary-fixed": "#ffdbce",
+                    "secondary-fixed-dim": "#ffb59a",
+                    "outline-variant": "#c5c5d8",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#dad9e5",
+                    "bg-card": "#ffffff",
+                    "secondary-container": "#fd885b",
+                    "primary-fixed-dim": "#bcc2ff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding": "5%",
+                    "section-margin": "100px",
+                    "card-gap": "25px",
+                    "nav-height": "80px"
+            },
+            "fontFamily": {
+                    "nav-logo": ["Plus Jakarta Sans"],
+                    "section-title": ["Plus Jakarta Sans"],
+                    "label-small": ["Plus Jakarta Sans"],
+                    "body-text": ["Plus Jakarta Sans"],
+                    "form-ttl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "nav-logo": ["1.5rem", {"letterSpacing": "-1px", "fontWeight": "800"}],
+                    "section-title": ["2.5rem", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "label-small": ["0.85rem", {"fontWeight": "600"}],
+                    "body-text": ["1rem", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "form-ttl": ["1.8rem", {"lineHeight": "1.1", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        :root {
+            --bg-primary: #3349e5;
+            --nav-h: 80px;
+        }
+        .dark {
+            --bg-primary: #0f172a;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+        }
+
+        /* Geometric Shapes */
+        .sh-circle { border-radius: 50%; }
+        .sh-diamond { transform: rotate(45deg); }
+        .fa { position: absolute; opacity: 0.4; z-index: 0; pointer-events: none; }
+        
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .float-anim { animation: float-slow 6s ease-in-out infinite; }
+
+        /* Form Components */
+        .form-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 2.5rem;
+            background-color: white;
+            border: 3px solid black;
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+            position: relative;
+            z-index: 10;
+        }
+        .dark .form-card {
+            background-color: #1e293b;
+            border-color: white;
+            box-shadow: 12px 12px 0px 0px rgba(255,255,255,0.2);
+        }
+
+        .btn-sub {
+            background-color: #3349e5;
+            color: white;
+            font-weight: 800;
+            padding: 1rem;
+            border: 2px solid black;
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s ease;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        .btn-sub:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+        }
+        .btn-sub:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+        }
+
+        .ff input {
+            width: 100%;
+            padding: 0.875rem;
+            border: 3px solid black;
+            background: white;
+            transition: all 0.2s;
+            outline: none;
+            border-radius: 0;
+        }
+        .ff input:focus {
+            box-shadow: 4px 4px 0px 0px #ffd600;
+        }
+        .dark .ff input {
+            background: #0f172a;
+            color: white;
+            border-color: white;
+        }
+
+        /* Navigation */
+        .top-nav {
+            height: 80px;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid black;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .dark .top-nav {
+            background-color: #0f172a;
+            border-bottom-color: white;
+            box-shadow: 0px 4px 0px 0px rgba(255,255,255,0.1);
+        }
+
+        .material-symbols-outlined {
+            vertical-align: middle;
+            font-size: 24px;
+        }
+
+        .book-icon-bg {
+            width: 100px;
+            height: 140px;
+            background: white;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            transform: rotate(-5deg);
+        }
+    </style>
+</head>
+<body class="light overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="top-nav">
+<div class="flex items-center gap-8">
+<span class="text-3xl font-black italic tracking-tighter text-blue dark:text-blue-400 font-nav-logo text-nav-logo">Litto</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-1 text-black dark:text-white font-black hover:text-orange transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="hidden sm:inline">Voltar</span>
+</a>
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" onclick="document.body.classList.toggle('dark')">
+<span class="material-symbols-outlined text-black dark:text-white">dark_mode</span>
+</button>
+<a class="bg-yellow text-black px-6 py-2 border-2 border-black font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all" href="#">Entrar</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden bg-blue dark:bg-slate-900">
+<!-- Animated Background Shapes -->
+<div class="fa sh-circle w-96 h-96 bg-yellow top-[-10%] right-[-10%] float-anim"></div>
+<div class="fa sh-diamond w-64 h-64 bg-orange bottom-[-5%] left-[-5%] float-anim" style="animation-delay: 1s;"></div>
+<div class="fa sh-circle w-48 h-48 bg-white top-[20%] left-[5%] float-anim opacity-20" style="animation-delay: 2s;"></div>
+<!-- Decorative Book Icons (Replacing Images) -->
+<div class="hidden lg:flex absolute left-20 top-40 flex-col gap-12 z-0">
+<div class="book-icon-bg bg-orange-400">
+<span class="material-symbols-outlined text-4xl text-white">menu_book</span>
+</div>
+<div class="book-icon-bg bg-yellow-400 translate-x-10 rotate-12">
+<span class="material-symbols-outlined text-4xl text-white">auto_stories</span>
+</div>
+</div>
+<div class="hidden lg:flex absolute right-20 bottom-40 flex-col gap-12 z-0">
+<div class="book-icon-bg bg-blue-400 -rotate-12">
+<span class="material-symbols-outlined text-4xl text-white">library_books</span>
+</div>
+<div class="book-icon-bg bg-green-400 translate-x-[-20px] rotate-6">
+<span class="material-symbols-outlined text-4xl text-white">bookmarks</span>
+</div>
+</div>
+<!-- Login Card Container -->
+<section class="container mx-auto px-container-padding flex justify-center py-12 relative z-10">
+<div class="form-card">
+<div class="text-center mb-8">
+<h1 class="font-form-ttl text-form-ttl text-black dark:text-white mb-2">Entrar</h1>
+<p class="text-text-secondary font-body-text text-body-text dark:text-slate-400">Bem-vindo de volta à nossa estante digital.</p>
+</div>
+<form class="space-y-6">
+<div class="ff">
+<label class="block text-sm font-black text-black dark:text-white mb-2 ml-1">E-mail</label>
+<input placeholder="seu@email.com" required="" type="email"/>
+</div>
+<div class="ff">
+<div class="flex justify-between mb-2">
+<label class="text-sm font-black text-black dark:text-white ml-1">Senha</label>
+<a class="text-xs font-black text-blue dark:text-blue-400 hover:underline" href="#">Esqueceu a senha?</a>
+</div>
+<input placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex items-center gap-2 mb-6">
+<input class="w-5 h-5 rounded-none border-2 border-black text-blue focus:ring-0" id="remember" type="checkbox"/>
+<label class="text-sm font-black text-black dark:text-slate-300" for="remember">Lembrar de mim</label>
+</div>
+<button class="btn-sub font-form-ttl" type="submit">
+                        Entrar na Litto
+                    </button>
+</form>
+<div class="mt-8 pt-6 border-t-2 border-black dark:border-slate-700 text-center">
+<p class="text-sm font-black text-slate-600 dark:text-slate-400">
+                        Não tem uma conta? 
+                        <a class="text-blue dark:text-blue-400 hover:underline ml-1" href="#">Criar Conta</a>
+</p>
+</div>
+<!-- Social Login Alternative -->
+<div class="mt-6 flex flex-col gap-3">
+<button class="flex items-center justify-center gap-3 w-full py-3 px-4 border-2 border-black dark:border-white font-black text-sm bg-white dark:bg-slate-800 text-black dark:text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all">
+<img alt="" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfnyo-FKNM2vrEblSfTFxx-ukn7g_fKNCOekPmkbg_LUlRj5dpK0Dxt7MkuYT2SmNvwKrKB8SCBt0l8A6849Lf4N_d7VkBKKLBaVjOkTB2l8RyEyFt9BiBQXba8OYn024FqGfB7SrJoaoLdxLJ_b1OB1Z7XIYY9wriOh0HycqLM0UGpt68ZJZsgZEgrYzljV-37zDBg6Q9qvBZCslEpH0IcshO38EMXuiK5mgrePukJHNPHMv3CGEK7ytPYW0BcFrdJMKu1EP2Dgs8"/>
+                        Continuar com Google
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Illustrative Side Elements -->
+<div class="hidden lg:block fixed left-12 bottom-12 z-20 pointer-events-none">
+<div class="flex flex-col gap-4">
+<div class="bg-yellow border-2 border-black p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] -rotate-3">
+<p class="text-xs font-black uppercase text-black">Dica do dia</p>
+<p class="text-sm font-black text-black">"Um livro é um presente que <br/> você pode abrir de novo e de novo."</p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-[5%] flex flex-col md:flex-row justify-between items-center gap-6 bg-white dark:bg-slate-950 border-t-4 border-black dark:border-white">
+<div class="flex flex-col gap-2">
+<span class="text-xl font-black text-black dark:text-white font-nav-logo text-nav-logo">Litto</span>
+<p class="text-black dark:text-slate-400 font-bold text-sm font-body-text text-body-text">© 2024 Litto Book Club. Cultivando histórias.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-black dark:text-slate-400 font-bold text-sm hover:text-orange transition-colors underline-offset-4 hover:underline" href="#">Sobre</a>
+<a class="text-black dark:text-slate-400 font-bold text-sm hover:text-orange transition-colors underline-offset-4 hover:underline" href="#">Privacidade</a>
+<a class="text-black dark:text-slate-400 font-bold text-sm hover:text-orange transition-colors underline-offset-4 hover:underline" href="#">Termos</a>
+<a class="text-black dark:text-slate-400 font-bold text-sm hover:text-orange transition-colors underline-offset-4 hover:underline" href="#">Contato</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#ffffff",
+                      "blue": "#5065ff",
+                      "on-surface-variant": "#444655",
+                      "on-primary-fixed": "#000c62",
+                      "primary": "#3349e5",
+                      "on-secondary-fixed-variant": "#7f2b02",
+                      "surface-bright": "#fbf8ff",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#bcc2ff",
+                      "cream": "#FFFDF5",
+                      "tertiary-container": "#c45500",
+                      "primary-fixed": "#dfe0ff",
+                      "on-tertiary-fixed-variant": "#783100",
+                      "error-container": "#ffdad6",
+                      "dark": "#0f172a",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container-high": "#e8e7f4",
+                      "surface-container-highest": "#e3e1ee",
+                      "tertiary": "#9d4300",
+                      "surface": "#fbf8ff",
+                      "inverse-on-surface": "#f1effc",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb690",
+                      "tertiary-fixed": "#ffdbcb",
+                      "on-secondary-fixed": "#380d00",
+                      "bg-primary": "#FFFDF5",
+                      "text-secondary": "#444655",
+                      "surface-variant": "#e3e1ee",
+                      "orange": "#ff8c00",
+                      "inverse-surface": "#2f3039",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f4f2ff",
+                      "primary-container": "#5065ff",
+                      "bg-secondary": "#f4f2ff",
+                      "surface-tint": "#344ae6",
+                      "background": "#fbf8ff",
+                      "outline": "#757687",
+                      "on-surface": "#1a1b24",
+                      "secondary": "#9f4119",
+                      "border-light": "#e3e1ee",
+                      "text-primary": "#1a1b24",
+                      "on-primary-fixed-variant": "#0c2acf",
+                      "on-secondary-container": "#702400",
+                      "surface-container": "#eeecf9",
+                      "on-tertiary-container": "#ffffff",
+                      "yellow": "#ffd700",
+                      "on-background": "#1a1b24",
+                      "secondary-fixed": "#ffdbce",
+                      "secondary-fixed-dim": "#ffb59a",
+                      "outline-variant": "#c5c5d8",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-dim": "#dad9e5",
+                      "bg-card": "#ffffff",
+                      "secondary-container": "#fd885b",
+                      "primary-fixed-dim": "#bcc2ff",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding": "5%",
+                      "section-margin": "100px",
+                      "card-gap": "25px",
+                      "nav-height": "80px"
+              },
+              "fontFamily": {
+                      "nav-logo": ["Plus Jakarta Sans"],
+                      "section-title": ["Plus Jakarta Sans"],
+                      "label-small": ["Plus Jakarta Sans"],
+                      "body-text": ["Plus Jakarta Sans"],
+                      "form-ttl": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "nav-logo": ["1.5rem", {"letterSpacing": "-1px", "fontWeight": "800"}],
+                      "section-title": ["2.5rem", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "label-small": ["0.85rem", {"fontWeight": "600"}],
+                      "body-text": ["1rem", {"lineHeight": "1.6", "fontWeight": "500"}],
+                      "form-ttl": ["1.8rem", {"lineHeight": "1.1", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        .form-card {
+            background: white;
+            border: 2px solid black;
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,1);
+            transition: transform 0.2s ease;
+        }
+        .dark .form-card {
+            background: #1e293b;
+            border-color: white;
+            box-shadow: 12px 12px 0px 0px rgba(255,255,255,0.2);
+        }
+
+        .bk-card {
+            border: 2px solid black;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s ease;
+        }
+        .bk-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+        }
+        .dark .bk-card { border-color: white; box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.2); }
+
+        .btn-cta {
+            background: #5065ff;
+            color: white;
+            border: 2px solid black;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            font-weight: 800;
+            transition: all 0.2s ease;
+        }
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+        }
+
+        .urec {
+            border: 2px solid black;
+            padding: 1.5rem;
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+        }
+
+        .shapes {
+            position: absolute;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.5;
+        }
+
+        .book-icon-container {
+            aspect-ratio: 2/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-icon-container::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent 20%, rgba(255,255,255,0.2) 50%, transparent 80%);
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #FFFDF5; }
+        ::-webkit-scrollbar-thumb { background: #5065ff; border: 2px solid #000; }
+    </style>
+</head>
+<body class="bg-yellow/10 dark:bg-slate-950 text-black dark:text-white min-h-screen transition-colors duration-300">
+<!-- Navbar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-[5%] h-20 bg-white dark:bg-slate-900 border-b-2 border-black dark:border-white shadow-[0px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-8">
+<span class="text-3xl font-black italic tracking-tighter text-[#5065ff] dark:text-blue-400 font-nav-logo">Litto</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[#5065ff] dark:text-blue-400 border-b-4 border-[#5065ff] pb-1 font-bold hover:-translate-y-0.5 transition-transform duration-200" href="#">Voltar</a>
+<a class="text-black dark:text-white font-bold hover:-translate-y-0.5 transition-transform duration-200" href="#">Explorar</a>
+<a class="text-black dark:text-white font-bold hover:-translate-y-0.5 transition-transform duration-200" href="#">Minha Estante</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined block dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block text-white">light_mode</span>
+</button>
+<button class="bg-[#5065ff] text-white px-6 py-2 border-2 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">Entrar</button>
+</div>
+</header>
+<main class="pt-32 px-[5%] pb-20 relative overflow-hidden">
+<!-- Animated Background Shapes -->
+<div class="shapes top-20 -left-20 w-[600px] h-[600px] bg-blue/30 rounded-full animate-pulse"></div>
+<div class="shapes bottom-0 -right-20 w-[700px] h-[700px] bg-orange/20 rounded-full animate-bounce" style="animation-duration: 15s;"></div>
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto mb-32">
+<div class="form-card p-8 md:p-12 flex flex-col md:flex-row gap-12 items-start bg-white dark:bg-slate-800">
+<div class="w-full md:w-1/3 shrink-0">
+<div class="book-icon-container bg-blue dark:bg-blue-900 border-4 border-black dark:border-white shadow-[16px_16px_0px_0px_#ff8c00]">
+<span class="material-symbols-outlined text-white text-8xl" style="font-variation-settings: 'FILL' 1, 'wght' 700">auto_stories</span>
+</div>
+</div>
+<div class="flex-1 space-y-6">
+<div>
+<span class="bg-yellow px-3 py-1 text-black font-black text-xs uppercase border-2 border-black inline-block mb-4">Sci-Fi Classic</span>
+<h1 class="font-form-ttl text-6xl font-extrabold leading-none tracking-tight mb-2">Fundação</h1>
+<p class="text-2xl font-bold text-[#5065ff] dark:text-blue-400">Isaac Asimov</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex text-yellow-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<span class="font-bold opacity-70">4.8 (2.4k avaliações)</span>
+</div>
+<p class="font-body-text text-lg leading-relaxed dark:text-slate-300">
+                        A humanidade se espalhou por toda a galáxia, sob o domínio do Império Galático. No entanto, o matemático Hari Seldon prevê a queda inevitável do Império e uma era de trevas de 30 mil anos. Para reduzir este período para apenas mil anos, ele estabelece a Fundação — um refúgio para o conhecimento e a ciência no extremo da galáxia.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="btn-cta px-10 py-4 text-xl flex items-center gap-3">
+<span class="material-symbols-outlined">library_add</span>
+                            Adicionar à Estante
+                        </button>
+<button class="border-2 border-black dark:border-white bg-white dark:bg-slate-700 px-8 py-4 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+                            Ler Amostra
+                        </button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t-2 border-black dark:border-white/20">
+<div>
+<p class="text-xs uppercase font-black opacity-50 mb-1">Páginas</p>
+<p class="font-bold">240</p>
+</div>
+<div>
+<p class="text-xs uppercase font-black opacity-50 mb-1">Editora</p>
+<p class="font-bold">Aleph</p>
+</div>
+<div>
+<p class="text-xs uppercase font-black opacity-50 mb-1">Idioma</p>
+<p class="font-bold">Português</p>
+</div>
+<div>
+<p class="text-xs uppercase font-black opacity-50 mb-1">Ano</p>
+<p class="font-bold">1951</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Related Recommendations -->
+<section class="max-w-6xl mx-auto mb-32 bg-blue/5 dark:bg-blue-900/10 p-12 border-2 border-black dark:border-white/20 shadow-[8px_8px_0px_0px_rgba(80,101,255,1)]">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+<div>
+<h2 class="font-section-title text-4xl mb-2">Quem leu, também gostou</h2>
+<p class="font-body-text text-[#5065ff] dark:text-blue-400 font-bold">Baseado nas suas preferências de Sci-Fi</p>
+</div>
+<a class="flex items-center gap-2 font-black border-b-2 border-black dark:border-white pb-1 hover:translate-x-1 transition-transform" href="#">Ver todos <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-card-gap">
+<!-- Book Card 1 -->
+<div class="bk-card bg-white dark:bg-slate-800 p-4 flex flex-col h-full group">
+<div class="book-icon-container bg-orange mb-4">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1">desert</span>
+</div>
+<h3 class="font-bold text-xl leading-tight mb-1">Duna</h3>
+<p class="text-sm opacity-70 mb-4">Frank Herbert</p>
+<div class="mt-auto">
+<span class="text-xs font-black bg-blue text-white px-3 py-1 border-2 border-black">SPACE OPERA</span>
+</div>
+</div>
+<!-- Book Card 2 -->
+<div class="bk-card bg-white dark:bg-slate-800 p-4 flex flex-col h-full group">
+<div class="book-icon-container bg-blue mb-4">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1">public</span>
+</div>
+<h3 class="font-bold text-xl leading-tight mb-1">O Problema dos Três Corpos</h3>
+<p class="text-sm opacity-70 mb-4">Cixin Liu</p>
+<div class="mt-auto">
+<span class="text-xs font-black bg-orange text-white px-3 py-1 border-2 border-black">HARD SCI-FI</span>
+</div>
+</div>
+<!-- Book Card 3 -->
+<div class="bk-card bg-white dark:bg-slate-800 p-4 flex flex-col h-full group">
+<div class="book-icon-container bg-yellow mb-4">
+<span class="material-symbols-outlined text-black text-6xl" style="font-variation-settings: 'FILL' 1">memory</span>
+</div>
+<h3 class="font-bold text-xl leading-tight mb-1">Neuromancer</h3>
+<p class="text-sm opacity-70 mb-4">William Gibson</p>
+<div class="mt-auto">
+<span class="text-xs font-black bg-blue text-white px-3 py-1 border-2 border-black">CYBERPUNK</span>
+</div>
+</div>
+<!-- Book Card 4 -->
+<div class="bk-card bg-white dark:bg-slate-800 p-4 flex flex-col h-full group">
+<div class="book-icon-container bg-red-500 mb-4">
+<span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1">local_fire_department</span>
+</div>
+<h3 class="font-bold text-xl leading-tight mb-1">Fahrenheit 451</h3>
+<p class="text-sm opacity-70 mb-4">Ray Bradbury</p>
+<div class="mt-auto">
+<span class="text-xs font-black bg-orange text-white px-3 py-1 border-2 border-black">DISTOPIA</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Reviews -->
+<section class="max-w-6xl mx-auto bg-orange/5 dark:bg-orange-900/10 p-12 border-2 border-black dark:border-white/20 shadow-[8px_8px_0px_0px_#ff8c00]">
+<div class="mb-12">
+<h2 class="font-section-title text-4xl mb-2">Comentários da Comunidade</h2>
+<p class="font-body-text text-slate-500 dark:text-slate-400 font-bold">O que os outros leitores estão dizendo</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Review Card 1 -->
+<div class="urec bg-white dark:bg-slate-800 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-14 h-14 bg-blue rounded-full border-2 border-black flex items-center justify-center text-white font-black text-xl">AM</div>
+<div>
+<h4 class="font-bold text-xl leading-none">Arthur M.</h4>
+<small class="text-xs opacity-50 uppercase font-black">Lido em Outubro 2023</small>
+</div>
+</div>
+<div class="flex text-yellow-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+</div>
+<p class="font-body-text italic leading-relaxed text-lg">"Uma obra-prima absoluta. A forma como Asimov constrói o conceito de psico-história é fascinante e ainda parece muito atual. É incrível como ele foca em grandes movimentos históricos em vez de personagens individuais."</p>
+<div class="flex gap-4 pt-2">
+<button class="flex items-center gap-2 text-sm font-black border-2 border-black px-4 py-2 bg-yellow hover:bg-yellow-400 transition-colors">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1">thumb_up</span> Útil (42)
+                        </button>
+</div>
+</div>
+<!-- Review Card 2 -->
+<div class="urec bg-white dark:bg-slate-800 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-14 h-14 bg-orange-500 rounded-full border-2 border-black flex items-center justify-center text-white font-black text-xl">CL</div>
+<div>
+<h4 class="font-bold text-xl leading-none">Clara Lima</h4>
+<small class="text-xs opacity-50 uppercase font-black">Lido em Janeiro 2024</small>
+</div>
+</div>
+<div class="flex text-yellow-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+</div>
+<p class="font-body-text italic leading-relaxed text-lg">"A leitura é bem rápida porque os contos são dinâmicos. No começo achei estranho os saltos temporais, mas depois você entende que o verdadeiro protagonista é a própria Fundação."</p>
+<div class="flex gap-4 pt-2">
+<button class="flex items-center gap-2 text-sm font-black border-2 border-black px-4 py-2 bg-yellow hover:bg-yellow-400 transition-colors">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1">thumb_up</span> Útil (18)
+                        </button>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<button class="font-black text-xl text-blue dark:text-blue-400 border-b-4 border-blue dark:border-blue-400 pb-1 hover:text-orange-600 transition-colors">Carregar mais comentários</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-[5%] flex flex-col md:flex-row justify-between items-center gap-8 bg-black text-white border-t-4 border-orange mt-20">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="text-4xl font-black italic tracking-tighter text-[#5065ff] font-nav-logo">Litto</span>
+<p class="font-['Plus_Jakarta_Sans'] font-medium text-sm text-slate-400">© 2024 Litto Book Club. Cultivando histórias com cores vibrantes.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-black text-sm uppercase hover:text-yellow transition-colors" href="#">Sobre</a>
+<a class="font-black text-sm uppercase hover:text-yellow transition-colors" href="#">Privacidade</a>
+<a class="font-black text-sm uppercase hover:text-yellow transition-colors" href="#">Termos</a>
+<a class="font-black text-sm uppercase hover:text-yellow transition-colors" href="#">Contato</a>
+</div>
+</footer>
+</body></html>
